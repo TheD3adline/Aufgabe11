@@ -46,11 +46,11 @@ public class Main {
                     break;
                 case 2:
                     numHigh = numMid;
-                    numMid = lower(numMid);
+                    numMid -= lower(numLow, numHigh);
                     break;
                 case 3:
                     numLow = numMid;
-                    numMid = higher(numHigh, numMid);
+                    numMid += higher(numLow, numHigh);
                     break;
                 default:
                     System.out.println("Error: Falsche Eingabe, Programm abgebrochen!");
@@ -61,13 +61,12 @@ public class Main {
 
     }
 
-    public static int lower(int x) {
-        return x / 2;
+    public static int lower(int x, int y) {
+        return ((y - x) / 2) + 1;
     }
 
     public static int higher(int x, int y) {
-        int z = (x - y) / 2;
-        return z + y;
+        return (y - x) / 2;
     }
 
 }

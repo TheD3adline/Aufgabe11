@@ -25,7 +25,7 @@ public class Main {
             function = sc.nextInt();
             switch (function) {
                 case 1:
-                    System.out.println("Ich habe es geschafft Ihre Zahl, " + numMid + " zu finden und habe dazu " + tries + " Versuche gebraucht!");
+                    System.out.println("Ich habe es geschafft Ihre Zahl die " + numMid + " zu finden und habe dazu " + tries + " Versuche gebraucht!");
                     System.out.println("Wollen Sie noch einmal spielen?");
                     System.out.println("1. JA (RESET)");
                     System.out.println("0. NEIN (EXIT)");
@@ -74,7 +74,11 @@ public class Main {
     }
 
     public static int higher(int x, int y) {
-        return (y - x) / 2;
+        if (x == y - 1) {
+            return 1;
+        } else {
+            return (y - x) / 2;
+        }
     }
 
 }

@@ -6,68 +6,68 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int numHigh, numLow, num, function, loop;
+        int numHigh = 1000;
+        int numMid = 500;
+        int numLow = 1;
+        int function, loop;
         boolean reset = true;
-        boolean step = true;
         Scanner sc = new Scanner(System.in);
+        System.out.println("Dieses Spiel soll eine Zahl festellen die der Benutzer sich denkt");
+        System.out.println("Denken Sie bitte an eine Zahl zwischen " + numLow + " und " + numHigh);
 
         do {
-            numHigh = 1000;
-            num = 500;
-            numLow = 1;
-            System.out.println("Dieses Spiel soll eine Zahl festellen die der Benutzer sich denkt");
-            System.out.println("Denken Sie bitte an eine Zahl zwischen " + numLow + " und " + numHigh);
-            do {
-                System.out.println("Ist Ihre Zahl die " + num + " oder ist Ihre Zahl groesser (>) oder kleiner (<) als " + num + " ?");
-                System.out.println("Meine Zahl ist... ");
-                System.out.println("...tatsaechlich die " + num + ", 1 druecken!");
-                System.out.println("...kleiner (<) als " + num + ", 2 druecken!");
-                System.out.println("...groesser (>) als " + num + ", 3 druecken!");
-                function = sc.nextInt();
-                switch (function) {
-                    case 1:
-                        System.out.println("Ich habe es geschafft Ihre Zahl, " + num + " zu finden!");
-                        System.out.println("Wollen Sie noch einmal spielen?");
-                        System.out.println("1. JA (RESET)");
-                        System.out.println("0. NEIN (EXIT)");
-                        loop = sc.nextInt();
-                        if (loop == 0) {
-                            reset = false;
-                            System.out.println("Programm wird beendet!");
-                        } else if (loop == 1) {
-                            reset = true;
-                            System.out.println("NEUSTART!");
-                            numHigh = 1000;
-                            num = 500;
-                            numLow = 1;
-                        } else {
-                            System.out.println("ERROR: Falsche Eingabe, Programm abgebrochen!");
-                            reset = false;
-                        }
-                        break;
-                    case 2:
-                        lower(num, numHigh, numLow);
-                        break;
-                    case 3:
-
-
-                        break;
-                    default:
-                        System.out.println("Error: Falsche Eingabe, Programm abgebrochen!");
-                        step = false;
+            System.out.println("Ist Ihre Zahl die " + numMid + " oder ist Ihre Zahl groesser (>) oder kleiner (<) als " + numMid + " ?");
+            System.out.println("Meine Zahl ist... ");
+            System.out.println("...tatsaechlich die " + numMid + ", 1 druecken!");
+            System.out.println("...kleiner (<) als " + numMid + ", 2 druecken!");
+            System.out.println("...groesser (>) als " + numMid + ", 3 druecken!");
+            function = sc.nextInt();
+            switch (function) {
+                case 1:
+                    System.out.println("Ich habe es geschafft Ihre Zahl, " + numMid + " zu finden!");
+                    System.out.println("Wollen Sie noch einmal spielen?");
+                    System.out.println("1. JA (RESET)");
+                    System.out.println("0. NEIN (EXIT)");
+                    loop = sc.nextInt();
+                    if (loop == 0) {
                         reset = false;
-                }
-
-            } while(step);
+                        System.out.println("Programm wird beendet!");
+                    } else if (loop == 1) {
+                        System.out.println("NEUSTART!");
+                        numHigh = 1000;
+                        numMid = 500;
+                        numLow = 1;
+                        System.out.println("Dieses Spiel soll eine Zahl festellen die der Benutzer sich denkt");
+                        System.out.println("Denken Sie bitte an eine Zahl zwischen " + numLow + " und " + numHigh);
+                    } else {
+                        System.out.println("ERROR: Falsche Eingabe, Programm abgebrochen!");
+                        reset = false;
+                    }
+                    break;
+                case 2:
+                    numHigh = numMid;
+                    numMid = lower(numMid);
+                    break;
+                case 3:
+                    numLow = numMid;
+                    numMid = higher(numHigh, numMid);
+                    break;
+                default:
+                    System.out.println("Error: Falsche Eingabe, Programm abgebrochen!");
+                    reset = false;
+            }
 
         } while(reset);
 
     }
 
-    public static void lower(int num, int numHigh, int numLow) {
+    public static int lower(int x) {
+        return x / 2;
+    }
 
-
-
+    public static int higher(int x, int y) {
+        int z = (x - y) / 2;
+        return z + y;
     }
 
 }

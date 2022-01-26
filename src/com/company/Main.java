@@ -9,6 +9,7 @@ public class Main {
         int numHigh = 1000;
         int numMid = 500;
         int numLow = 1;
+        int tries = 1;
         int function, loop;
         boolean reset = true;
         Scanner sc = new Scanner(System.in);
@@ -24,7 +25,7 @@ public class Main {
             function = sc.nextInt();
             switch (function) {
                 case 1:
-                    System.out.println("Ich habe es geschafft Ihre Zahl, " + numMid + " zu finden!");
+                    System.out.println("Ich habe es geschafft Ihre Zahl, " + numMid + " zu finden und habe dazu " + tries + " Versuche gebraucht!");
                     System.out.println("Wollen Sie noch einmal spielen?");
                     System.out.println("1. JA (RESET)");
                     System.out.println("0. NEIN (EXIT)");
@@ -37,6 +38,7 @@ public class Main {
                         numHigh = 1000;
                         numMid = 500;
                         numLow = 1;
+                        tries = 1;
                         System.out.println("Dieses Spiel soll eine Zahl festellen die der Benutzer sich denkt");
                         System.out.println("Denken Sie bitte an eine Zahl zwischen " + numLow + " und " + numHigh);
                     } else {
@@ -47,10 +49,12 @@ public class Main {
                 case 2:
                     numHigh = numMid;
                     numMid -= lower(numLow, numHigh);
+                    tries++;
                     break;
                 case 3:
                     numLow = numMid;
                     numMid += higher(numLow, numHigh);
+                    tries++;
                     break;
                 default:
                     System.out.println("Error: Falsche Eingabe, Programm abgebrochen!");

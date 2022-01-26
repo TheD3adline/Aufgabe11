@@ -62,7 +62,11 @@ public class Main {
     }
 
     public static int lower(int x, int y) {
-        return ((y - x) / 2) + 1;
+        if (x == 1) {
+            return y / 2;
+        } else {
+            return (y - x) / 2;
+        }
     }
 
     public static int higher(int x, int y) {
